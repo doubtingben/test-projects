@@ -1,0 +1,13 @@
+---
+
+- name: restart wg-magnesium
+  shell: "ifdown wg-magnesium && ifup wg-magnesium"
+
+- name: restart test_daemon
+  systemd:
+    name: test_daemon
+    daemon_reload: yes
+    enabled: yes
+    state: started
+
+...

@@ -1,0 +1,12 @@
+---
+
+- hosts: magnesium
+
+  vars:
+    kernel_version: 4.9.0-6-amd64
+    wg_test_port: 8000
+
+  roles:
+    - wireguard
+
+...

@@ -1,0 +1,29 @@
+[all:children]
+magnesium
+
+[magnesium:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=root
+ansible_ssh_private_key_file=~/.ssh/bwilson-ahref-id_rsa
+
+[magnesium]
+#magnesium000 ansible_host=63.172.75.162 wg_addr=10.88.88.30 wg_pubkey=6PNZCR5mNKVpJiS87JxXwvFW8ynJ1K7cKX/iftoxrVI=
+magnesium001 ansible_host=163.172.76.2 wg_addr=10.88.88.31 wg_pubkey=YRJs6JKNv8BxijBHQwLTiTbW7SkYwBlE/rlR3jSXIgE=
+magnesium002 ansible_host=163.172.76.3 wg_addr=10.88.88.32 wg_pubkey=dZvUPpGu8m0i8wXVMs1yLXY+BGurlOp/mZu4n6QwOno=
+magnesium003 ansible_host=163.172.76.4 wg_addr=10.88.88.33 wg_pubkey=nnyMold/cE7ymhmVQDu33PZjCFCNnAzoEeHQO2XlSTA=
+magnesium004 ansible_host=163.172.76.5 wg_addr=10.88.88.34 wg_pubkey=spFcHLDI+651S+D7qlgp9tz6J6AWNXASEAGvEQao9i4=
+magnesium005 ansible_host=163.172.76.6 wg_addr=10.88.88.35 wg_pubkey=9SqqsXyr60kWjIcE48UtViKhvsqSfx38jYcH4ZpWkzE=
+magnesium006 ansible_host=163.172.76.7 wg_addr=10.88.88.36 wg_pubkey=rYFeXIR7ibL4bLJttSm3XB+YlrUyyuCegcjKpe9x6jA=
+magnesium007 ansible_host=163.172.76.8 wg_addr=10.88.88.37 wg_pubkey=dLJi381nRG9+NG7rGaJ8T8ttcV7WRU/E/4pzNy8L3BU=
+magnesium008 ansible_host=163.172.76.9 wg_addr=10.88.88.38 wg_pubkey=Lg+dB9POoOOilPjSL11oX1gUXpiSSQS48GaMBOm/ok4=
+magnesium009 ansible_host=163.172.76.10 wg_addr=10.88.88.39 wg_pubkey=T/XeLV2UyCl9aJn8E0n3r9U9hAXx2dYqDzuI3DbvDjw=
+magnesium010 ansible_host=163.172.76.11 wg_addr=10.88.88.40 wg_pubkey=Bx3XrOuONeaM7kmqHJepqXUx9Q89aqYbJCOaIxDdqXM=
+magnesium011 ansible_host=163.172.76.12 wg_addr=10.88.88.41 wg_pubkey=NaVj+y5T11akMPXPU3nlL+xsDNwjZLl5jk+DKGRb6D4=
+magnesium012 ansible_host=163.172.76.13 wg_addr=10.88.88.42 wg_pubkey=5VJ29rqDAwIut9Q21cYn6UrbXN50np9FluI1/uHs6gE=
+magnesium013 ansible_host=163.172.76.14 wg_addr=10.88.88.43 wg_pubkey=FfT0LE7NTWPXhyVCIAwVLAJzyDJxpxdQE9KNb1TO1nk=
+magnesium014 ansible_host=163.172.76.15 wg_addr=10.88.88.44 wg_pubkey=PG3p+WLYnERWYbSg5g+iqZh9xXPu+3t8nvVB4W/efgE=
+magnesium015 ansible_host=163.172.76.17 wg_addr=10.88.88.45 wg_pubkey=8/iVl186hvQeOiJIgdWT+ldlwzE6Nx8/fNPqef2Ha0k=
+magnesium016 ansible_host=163.172.76.18 wg_addr=10.88.88.46 wg_pubkey=gd16yr3oaNdjhPOlQWavrUse+UGHH92TGI0N1EikYmQ=
+magnesium017 ansible_host=163.172.76.19 wg_addr=10.88.88.47 wg_pubkey=je5+4RAejJbqJB/FDYLY/9LhVe9g6DGdmNrr3tdcemA=
+magnesium018 ansible_host=163.172.76.20 wg_addr=10.88.88.48 wg_pubkey=2tm6FE2+uSYm8Dk9shXS/EBNfHICjVIpjwuxVc6x1hQ=
+magnesium019 ansible_host=163.172.76.21 wg_addr=10.88.88.49 wg_pubkey=cyp2rEsnukIuuY1yXXwt370upzCp+OMshK0JQGl4WXE=

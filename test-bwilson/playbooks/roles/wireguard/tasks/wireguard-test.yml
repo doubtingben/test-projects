@@ -1,0 +1,27 @@
+---
+
+- name: install test service
+  template:
+    src: test_daemon.service
+    dest: /etc/systemd/system/test_daemon.service
+  notify: restart test_daemon
+  tags:
+    wireguard-test
+
+- name: enable test service
+  systemd:
+    name: test_daemon
+    daemon_reload: yes
+    enabled: yes
+    state: started
+  tags:
+    wireguard-test
+
+- name: test peers
+  uri:
+    url: "http://{{ hostvars[item]['wg_addr'] }}:{{ wg_test_port }}"
+    status_code: 200
+  with_items:
+    - "{{ groups['magnesium'] }}"
+
+...

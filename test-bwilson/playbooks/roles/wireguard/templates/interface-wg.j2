@@ -1,0 +1,7 @@
+auto wg-magnesium
+iface wg-magnesium inet static
+        address {{ wg_addr }}
+        netmask 255.255.255.0
+        pre-up ip link add $IFACE type wireguard
+        pre-up wg setconf $IFACE /etc/wireguard/$IFACE.conf
+        post-down ip link del $IFACE

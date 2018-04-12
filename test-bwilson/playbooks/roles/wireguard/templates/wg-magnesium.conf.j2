@@ -1,0 +1,13 @@
+[Interface]
+PrivateKey = {{ wg_private_keys[inventory_hostname] }}
+ListenPort = 51820
+
+{% for peer in groups['magnesium'] %}
+{% if peer != inventory_hostname %}
+[Peer]
+Endpoint = {{ hostvars[peer]['ansible_host'] }}:51820
+PublicKey = {{ hostvars[peer]['wg_pubkey'] }}
+AllowedIPs = {{ hostvars[peer]['wg_addr'] }}/32
+{% endif %}
+
+{% endfor %}

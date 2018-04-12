@@ -1,0 +1,24 @@
+---
+
+- name: install kernel image and headers
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - "linux-image-{{ facter_kernelrelease }}"
+    - "linux-headers-{{ facter_kernelrelease }}"
+
+- name: add wireguard source
+  apt_repository:
+    repo: deb http://deb.debian.org/debian/ unstable main
+    filename: /etc/apt/sources.list.d/unstable-wireguard.list
+    state: present
+
+- name: install wireguard
+  apt:
+    cache_valid_time: 86400 # Refresh cache if older then 24 hours
+    name: wireguard
+    state: present
+
+...

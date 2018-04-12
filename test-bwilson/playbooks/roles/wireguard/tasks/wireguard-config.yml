@@ -1,0 +1,22 @@
+---
+
+- name: ensure interfaces.d is sources
+  lineinfile:
+    path: /etc/network/interfaces
+    regexp: '^source /etc/network/interfaces.d'
+    line: 'source /etc/network/interfaces.d/*'
+  notify: restart wg-magnesium
+
+- name: template wireguard interface
+  template:
+    src: interface-wg.j2
+    dest: /etc/network/interfaces.d/wg-magnesium
+  notify: restart wg-magnesium
+
+- name: template wiregaurd config
+  template:
+    src: wg-magnesium.conf.j2
+    dest: /etc/wireguard/wg-magnesium.conf
+  notify: restart wg-magnesium
+
+...

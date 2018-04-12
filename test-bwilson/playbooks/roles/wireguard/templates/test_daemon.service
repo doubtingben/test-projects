@@ -1,0 +1,8 @@
+[Unit]
+Description=test_daemon
+
+[Service]
+ExecStart=/usr/bin/python3 -m http.server --bind {{ wg_addr }} {{ wg_test_port }}
+
+[Install]
+WantedBy=multi-user.target

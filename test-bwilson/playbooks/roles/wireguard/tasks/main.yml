@@ -1,0 +1,18 @@
+---
+
+- name: run install tasks
+  include_tasks: wireguard-install.yml
+  tags:
+    wireguard-install
+
+- name: run config tasks
+  include_tasks: wireguard-config.yml
+  tags:
+    wireguard-config
+
+- name: run test tasks
+  include_tasks: wireguard-test.yml
+  tags:
+    wireguard-test
+
+...
