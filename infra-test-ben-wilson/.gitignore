@@ -1,0 +1,6 @@
+.env
+.vscode/
+loadtests/influxdb/
+infra-test-ben-wilson
+*.iml
+debug

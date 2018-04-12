@@ -1,0 +1,63 @@
+version: '2'
+
+services:
+  infra-test-ben-wilson:
+    build: .
+    ports:
+      - "8081:8081"
+    command: ["serve", "-p", "8081", "-a", "${APIKEY}"]
+    env_file:
+      - .env
+    
+  loadimpact:
+    image: loadimpact/k6
+    volumes:
+      - ./loadtests:/loadtests
+    command: ["run", "--out", "influxdb=http://influxdb:8086/loadimpact", "/loadtests/script.js"]
+    links:
+      - infra-test-ben-wilson
+
+  influxdb:
+    image: influxdb:1.3
+    volumes:
+      - ./loadtests/influxdb:/var/lib/influxdb
+    ports:
+      - "8083:8083"
+
+  cadvisor:
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+
+  prometheus-node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+      - /etc/hostname:/etc/host_hostname
+    command: |
+      -collector.procfs /host/proc
+      -collector.sysfs /host/sys
+      -collector.filesystem.ignored-mount-points "^/(sys|proc|dev|host|etc)($$|/)"
+      -collectors.enabled="conntrack,diskstats,entropy,filefd,filesystem,loadavg,mdadm,meminfo,netdev,netstat,stat,textfile,time,vmstat"
+
+  prometheus-server:
+    image: prom/prometheus
+    links:
+      - cadvisor
+      - prometheus-node-exporter
+    volumes:
+      - ./loadtests/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 8082:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    links:
+      - prometheus-server:prometheus
