@@ -4,11 +4,11 @@ A collection of tasks completed.
 
 ## test-bwilson
 
-### Purpose
+##### Purpose
 
 Create a mesh overlay network on physical servers using [wireguard](https://www.wireguard.com/)
 
-### Demonstrates
+##### Demonstrates
 
 - Ansible
 - Systems and networking knowledge
@@ -16,13 +16,13 @@ Create a mesh overlay network on physical servers using [wireguard](https://www.
 
 ## infra-test-ben-wilson
 
-### Purpose
+##### Purpose
 
 Create a deployable Golang application to interact with INFURA's Ethereum API.
 
 Create a deployment, with Docker, and load test.
 
-### Demonstrates
+##### Demonstrates
 
 - Docker
 - Golang API interaction
