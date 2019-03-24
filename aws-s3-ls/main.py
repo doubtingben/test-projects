@@ -4,7 +4,7 @@ from os import environ
 import sys
 import argparse
 import boto3
-import  botocore
+import botocore
 parser = argparse.ArgumentParser(description="""
     A tool to list an s3 bucket's public keys
 """)
@@ -12,6 +12,7 @@ parser.add_argument("bucket")
 parser.add_argument('--verbose', dest='verbose', action='store_true')
 parser.set_defaults(verbose=False)
 args = parser.parse_args()
+
 
 def print_verbose(msg):
     print('--  {}'.format(msg))
@@ -29,6 +30,7 @@ def check_env():
         print('info: exiting due to error')
         sys.exit(1)
 
+
 def check_objects(bucket):
     client = boto3.client('s3')
     s3 = boto3.resource('s3')
@@ -36,15 +38,17 @@ def check_objects(bucket):
 
     try:
         for obj in b.objects.all():
-            if args.verbose: print_verbose(obj.key)
+            if args.verbose:
+                print_verbose(obj.key)
             c = client.get_object_acl(
                     Bucket=bucket,
                     Key=obj.key
             )
             for grant in c['Grants']:
-                if args.verbose: print_verbose(grant)
+                if args.verbose:
+                    print_verbose(grant)
                 public = True
-                if ( 'URI' in grant['Grantee']) and (grant['Grantee']['URI'] == 'http://acs.amazonaws.com/groups/global/AllUsers'):
+                if ('URI' in grant['Grantee']) and (grant['Grantee']['URI'] == 'http://acs.amazonaws.com/groups/global/AllUsers'):
                     public = True
                 else:
                     public = False
@@ -54,11 +58,14 @@ def check_objects(bucket):
     except botocore.exceptions.ClientError as e:
         print('error: AWS client exception: {}'.format(e))
 
+
 def main():
     check_env()
     check_objects(args.bucket)
-    if args.verbose: print_verbose('info: exiting normally')
+    if args.verbose:
+        print_verbose('info: exiting normally')
     sys.exit(0)
+
 
 if __name__ == '__main__':
     main()
